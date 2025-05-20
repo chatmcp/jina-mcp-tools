@@ -12,6 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@chatmcp/sdk": "^1.0.6",
     "@modelcontextprotocol/sdk": "^1.8.0",
     "node-fetch": "^3.3.2",
     "zod": "^3.22.4"
@@ -40,4 +41,4 @@
   "engines": {
     "node": ">=16.0.0"
   }
-} 
+}

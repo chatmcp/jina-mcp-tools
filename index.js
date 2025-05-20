@@ -2,8 +2,14 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { RestServerTransport } from "@chatmcp/sdk/server/rest.js";
+import { getParamValue } from "@chatmcp/sdk/utils/index.js";
 import { z } from "zod";
 import fetch from "node-fetch";
+
+const mode = getParamValue("mode") || "stdio";
+const port = getParamValue("port") || 9593;
+const endpoint = getParamValue("endpoint") || "/rest";
 
 // Get Jina API key from environment (optional)
 const getJinaApiKey = () => {
@@ -244,6 +250,18 @@ async function main() {
       }
     } else {
       console.error("No Jina AI API key found. Some features may be limited.");
+    }
+
+    if (mode === "rest") {
+      const transport = new RestServerTransport({
+        port,
+        endpoint,
+      });
+      await server.connect(transport);
+ 
+      await transport.startServer();
+ 
+      return;
     }
 
     // Connect the server to stdio transport
