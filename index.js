@@ -37,8 +37,14 @@ server.tool(
     url: z.string().url().describe("URL of the webpage to read and extract content from"),
     format: z.enum(["Default", "Markdown", "HTML", "Text", "Screenshot", "Pageshot"])
       .optional()
-      .default("Markdown")
-      .describe("Output format for the extracted content"),
+      .default("Default")
+      .describe(`Output format for the extracted content:
+        • Default (RECOMMENDED): The default pipeline optimized for most websites and LLM input
+        • Markdown: Returns the markdown directly from the HTML, bypassing the readability filtering
+        • HTML: Returns documentElement.outerHTML
+        • Text: Returns document.body.innerText
+        • Screenshot: Returns the image URL of the first screen
+        • Pageshot: Enhanced screenshot with additional metadata`),
     withLinks: z.boolean()
       .optional()
       .default(false)
