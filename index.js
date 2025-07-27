@@ -25,7 +25,7 @@ const createHeaders = (baseHeaders = {}) => {
 // Create MCP server for Jina AI tools
 const server = new McpServer({
   name: "jina-mcp-tools",
-  version: "1.1.0",
+  version: "1.1.1",
   description: "Jina AI tools for web reading and search"
 });
 
