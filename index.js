@@ -197,9 +197,9 @@ server.registerTool(
         .optional()
         .default("default")  
         .describe(`Output format - how content is returned:
-• "default" - Jina API's native format
-• "markdown" - Structured markdown with headers/links
-• "text" - Plain text only, fastest processing
+• "default" - Markdown focusing on main content.
+• "markdown" - Markdown with headers/links
+• "text" - Plain text only
 • "structured" - Rich metadata (links + images)`),
       customTimeout: z.number().optional().describe("Override timeout in seconds for slow sites")
     }
